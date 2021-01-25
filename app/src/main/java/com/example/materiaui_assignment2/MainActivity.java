@@ -119,14 +119,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent= new Intent(MainActivity.this, NextScreen.class);
         startActivity(intent);
 
-        //In the Next Activity How to get Data From DB.
-
-        //1. AppDatabase db = AppDatabase.getDB(getApplicationContext());
-//              PersonDao personDao = db.personDao();
-//        List<Person> allPerson = personDao.getAll();
-
-//       System.out.println("Aisha: "+allPerson);
-
         AppDatabase.cleanUp();
 
     }
