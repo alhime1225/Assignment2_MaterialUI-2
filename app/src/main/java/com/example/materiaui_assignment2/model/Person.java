@@ -2,12 +2,15 @@ package com.example.materiaui_assignment2.model;
 
 import android.widget.AutoCompleteTextView;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.example.materiaui_assignment2.R;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.List;
 
 //Room framework
 @Entity
@@ -23,7 +26,6 @@ public class Person {
     private String zip;
     private String email;
     private String birthday;
-
 
     public Person(){}
 
@@ -133,8 +135,19 @@ public class Person {
         this.birthday = birthday;
     }
 
+
+//    @Override
+//    public String toString() {
+//        return name;
+//    }
+
+
     @Override
     public String toString() {
-        return name;
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 }

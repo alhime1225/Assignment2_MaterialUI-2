@@ -1,6 +1,8 @@
 package com.example.materiaui_assignment2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.app.DatePickerDialog;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     AutoCompleteTextView spin_area, spin_state;
     private String[] mArea = {"+53", "+61", "+43", "+973", "+32","+591", "+63", "+44"};
     private String[] mState = {"Argentina", "Australia", "Autria", "Bahrain", "Belgium", "London"};
+//    private CustomAdapter recylerAdapter;
 //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+//        recylerAdapter = new CustomAdapter(this);
+//        recyclerView.setAdapter(recylerAdapter);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     public void datePicker(View view){
@@ -118,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(MainActivity.this, "Data Saved Successfully into DB" , Toast.LENGTH_LONG).show();
 
-        Intent intent= new Intent(MainActivity.this, NextScreen.class);
+        Intent intent= new Intent(MainActivity.this, RecylerViewClass.class);
         startActivity(intent);
 
         AppDatabase.cleanUp();
