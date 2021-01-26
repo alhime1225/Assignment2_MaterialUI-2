@@ -9,6 +9,7 @@ import androidx.room.PrimaryKey;
 import com.example.materiaui_assignment2.R;
 import com.google.android.material.textfield.TextInputEditText;
 
+//Room framework
 @Entity
 public class Person {
     @PrimaryKey(autoGenerate = true)
@@ -134,16 +135,6 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", area='" + area + '\'' +
-                ", address='" + address + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", zip='" + zip + '\'' +
-                ", email='" + email + '\'' +
-                ", birthday='" + birthday + '\'' +
-                '}';
+        return name;
     }
 }

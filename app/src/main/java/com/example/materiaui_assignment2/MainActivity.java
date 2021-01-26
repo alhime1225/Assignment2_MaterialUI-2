@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         spin_area = findViewById(R.id.txtArea1);
+        //Ability to send the data to the view
         ArrayAdapter mArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, mArea);
         mArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin_area.setAdapter(mArrayAdapter);
@@ -49,18 +50,16 @@ public class MainActivity extends AppCompatActivity {
 
         bday = findViewById(R.id.bday);
         bday.setEndIconOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v) {
                 datePicker(v);
             }
         });
 
-
     }
 
     public void datePicker(View view){
-        TextInputEditText bday = findViewById(R.id.bday1);
+        TextInputEditText bday1 = findViewById(R.id.bday1);
         final Calendar c = Calendar.getInstance();
         int mYear = c.get(Calendar.YEAR);
         int mMonth = c.get(Calendar.MONTH);
@@ -72,14 +71,14 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
-                        bday.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                        bday1.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
                     }
                 }, mYear, mMonth, mDay);
         datePickerDialog.show();
     }
 
     public void onSaveAction(View view){
-
+        //Getting data from UI
         TextInputEditText txtName= findViewById(R.id.txtName1);
         String name= txtName.getText().toString();
 
@@ -107,11 +106,14 @@ public class MainActivity extends AppCompatActivity {
         TextInputEditText txtBday = findViewById(R.id.bday1);
         String birthday= txtBday.getText().toString();
 
+        //Creating an entity object according to database
         Person person= new Person( name,  phone,  area,  address,  city,  state,  zip,  email,  birthday);
 
-
+        //Getting db instance
         AppDatabase db = AppDatabase.getDB(getApplicationContext());
+        //Getting a person dao
         PersonDao personDao = db.personDao();
+        //Inserting entity in db
         personDao.insertAll(person);
 
         Toast.makeText(MainActivity.this, "Data Saved Successfully into DB" , Toast.LENGTH_LONG).show();
